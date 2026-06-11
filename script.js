@@ -186,4 +186,16 @@
       if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
     });
   }
+
+  /* ---------- Back to top ---------- */
+  var toTop = document.getElementById("toTop");
+  if (toTop) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 600) toTop.classList.add("is-visible");
+      else toTop.classList.remove("is-visible");
+    }, { passive: true });
+    toTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 })();
