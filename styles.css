@@ -518,6 +518,61 @@ ul { list-style: none; }
 .to-top svg { width: 22px; height: 22px; fill: currentColor; }
 
 /* ===================================================================
+   COOKIE-CONSENT
+   =================================================================== */
+.consent {
+  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 200;
+  background: var(--plum); color: var(--cream);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow);
+  padding: 20px 24px; animation: pop 0.4s var(--ease);
+}
+.consent[hidden] { display: none; }
+.consent__inner {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  max-width: var(--container); margin-inline: auto;
+}
+.consent__text { flex: 1 1 340px; font-size: 0.9rem; line-height: 1.55; color: rgba(250,246,241,0.85); }
+.consent__text a { color: var(--blush); text-decoration: underline; }
+.consent__actions { display: flex; gap: 10px; flex: 0 0 auto; }
+.consent .btn--ghost { color: var(--cream); border-color: rgba(250,246,241,0.4); }
+.consent .btn--ghost:hover { background: rgba(250,246,241,0.12); color: #fff; border-color: rgba(250,246,241,0.6); }
+
+@media (max-width: 600px) {
+  .consent__actions { width: 100%; }
+  .consent__actions .btn { flex: 1 1 auto; }
+}
+
+/* ===================================================================
+   RECHTSSEITEN (Impressum / Datenschutz)
+   =================================================================== */
+.legal-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(250, 246, 241, 0.9);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  box-shadow: 0 1px 0 var(--line);
+}
+.legal-nav .container { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.legal-nav__home { font-weight: 500; font-size: 0.94rem; color: var(--ink); }
+.legal-nav__home:hover { color: var(--rose); }
+
+.legal { max-width: 760px; margin: 0 auto; padding: 130px 24px 90px; }
+.legal__back { display: inline-block; margin-bottom: 26px; color: var(--rose); font-weight: 500; font-size: 0.95rem; }
+.legal__back:hover { text-decoration: underline; }
+.legal h1 {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(2rem, 5vw, 3rem); color: var(--plum); margin-bottom: 28px; letter-spacing: -0.01em;
+}
+.legal h2 { font-family: var(--serif); font-weight: 500; font-size: 1.4rem; color: var(--plum); margin: 34px 0 12px; }
+.legal p { color: var(--ink-soft); margin-bottom: 16px; line-height: 1.7; }
+.legal a { color: var(--rose); }
+.legal strong { color: var(--ink); }
+.legal__note { font-size: 0.85rem; opacity: 0.8; font-style: italic; margin-top: 28px; }
+.legal-foot { border-top: 1px solid var(--line); padding: 28px 24px; text-align: center; color: var(--ink-soft); font-size: 0.85rem; }
+.legal-foot a { color: var(--ink-soft); }
+.legal-foot a:hover { color: var(--rose); }
+
+/* ===================================================================
    SCROLL REVEAL
    =================================================================== */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }

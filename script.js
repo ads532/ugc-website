@@ -187,6 +187,32 @@
     });
   }
 
+  /* ---------- Cookie-Consent (Google Consent Mode v2) ---------- */
+  var consent = document.getElementById("consent");
+  if (consent) {
+    var stored = null;
+    try { stored = localStorage.getItem("cookieConsent"); } catch (e) {}
+    if (!stored) consent.hidden = false; // nur zeigen, wenn noch keine Wahl getroffen
+
+    function setConsent(value) {
+      try { localStorage.setItem("cookieConsent", value); } catch (e) {}
+      if (value === "granted" && typeof gtag === "function") {
+        gtag("consent", "update", {
+          ad_storage: "granted", ad_user_data: "granted",
+          ad_personalization: "granted", analytics_storage: "granted"
+        });
+        // Signal für GTM, dass Zustimmung erteilt wurde
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "consent_granted" });
+      }
+      consent.hidden = true;
+    }
+    var accept = document.getElementById("consentAccept");
+    var reject = document.getElementById("consentReject");
+    if (accept) accept.addEventListener("click", function () { setConsent("granted"); });
+    if (reject) reject.addEventListener("click", function () { setConsent("denied"); });
+  }
+
   /* ---------- Back to top ---------- */
   var toTop = document.getElementById("toTop");
   if (toTop) {

@@ -9,10 +9,34 @@
 <meta property="og:description" content="Kreativ, authentisch und wirkungsvoll – Videos, die deine Zielgruppe ansprechen und Vertrauen aufbauen." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="assets/profile/hero1.jpg" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<!-- Selbst gehostete Schriften (kein Google-CDN, keine Datenübertragung an Dritte) -->
+<link rel="stylesheet" href="assets/fonts/fonts.css" />
 <link rel="stylesheet" href="styles.css" />
+
+<!-- Google Consent Mode v2 – Standard: alles abgelehnt, bis der Besucher zustimmt.
+     WICHTIG: Das hier muss VOR dem Google-Tag-Manager-Snippet stehen. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  try {
+    if (localStorage.getItem('cookieConsent') === 'granted') {
+      gtag('consent', 'update', {
+        ad_storage: 'granted', ad_user_data: 'granted',
+        ad_personalization: 'granted', analytics_storage: 'granted'
+      });
+    }
+  } catch (e) {}
+</script>
+<!-- ===== HIER später das Google-Tag-Manager-Snippet einfügen (GTM-XXXXXXX) ===== -->
 </head>
 <body>
 
@@ -330,8 +354,8 @@
       <a href="#kontakt">Kontakt</a>
     </nav>
     <div class="footer__legal">
-      <a href="#impressum" data-modal="impressum">Impressum</a>
-      <a href="#datenschutz" data-modal="datenschutz">Datenschutz</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
       <a href="https://www.instagram.com/olla.ge/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.tiktok.com/@olla.ge" target="_blank" rel="noopener">TikTok</a>
       <span>© <span id="year"></span> UGC by Olla · Olla Gerber</span>
@@ -339,62 +363,27 @@
   </div>
 </footer>
 
+<!-- ===== COOKIE-CONSENT ===== -->
+<div class="consent" id="consent" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis" hidden>
+  <div class="consent__inner">
+    <p class="consent__text">
+      Wir verwenden Cookies und Tools (u.&nbsp;a. Google Analytics &amp; Google Ads), um die
+      Nutzung unserer Website zu analysieren und Inhalte zu verbessern. Mit „Akzeptieren"
+      stimmst du dem zu. Bei „Ablehnen" werden nur technisch notwendige Funktionen genutzt.
+      Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>.
+    </p>
+    <div class="consent__actions">
+      <button class="btn btn--ghost btn--small" id="consentReject" type="button">Ablehnen</button>
+      <button class="btn btn--primary btn--small" id="consentAccept" type="button">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+
 <!-- ===== BACK TO TOP ===== -->
 <button class="to-top" id="toTop" aria-label="Nach oben scrollen">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l-7 7 1.41 1.41L11 8.83V20h2V8.83l4.59 4.58L19 12z"/></svg>
 </button>
 
-<!-- ===== IMPRESSUM MODAL ===== -->
-<div class="modal" id="impressum" role="dialog" aria-modal="true" aria-labelledby="impressumTitle" hidden>
-  <div class="modal__backdrop" data-close></div>
-  <div class="modal__panel">
-    <button class="modal__close" data-close aria-label="Schließen">&times;</button>
-    <h2 id="impressumTitle">Impressum</h2>
-    <p>
-      <strong>Olla Gerber</strong><br />
-      Calle Perelló 78<br />
-      ES&nbsp;–&nbsp;08005 Barcelona<br />
-      Spanien
-    </p>
-    <p>
-      <strong>USt-IdNr.:</strong> ESY6166233Q
-    </p>
-    <p>
-      <strong>Telefon:</strong> <a href="tel:+4917661919207">+49&nbsp;176&nbsp;61919207</a><br />
-      <strong>E-Mail:</strong> <a href="mailto:info@ugcbyolla.de">info@ugcbyolla.de</a>
-    </p>
-    <p class="modal__note">
-      Verantwortlich für den Inhalt: Olla Gerber, Anschrift wie oben.
-    </p>
-  </div>
-</div>
-
-<!-- ===== DATENSCHUTZ MODAL ===== -->
-<div class="modal" id="datenschutz" role="dialog" aria-modal="true" aria-labelledby="datenschutzTitle" hidden>
-  <div class="modal__backdrop" data-close></div>
-  <div class="modal__panel">
-    <button class="modal__close" data-close aria-label="Schließen">&times;</button>
-    <h2 id="datenschutzTitle">Datenschutz</h2>
-    <p>
-      Der Schutz deiner personenbezogenen Daten ist mir wichtig. Diese Website
-      erhebt keine personenbezogenen Daten über das technisch Notwendige hinaus
-      und setzt keine Tracking-Cookies ein.
-    </p>
-    <p>
-      Wenn du per E-Mail, Telefon oder WhatsApp Kontakt aufnimmst, werden deine
-      Angaben ausschließlich zur Bearbeitung deiner Anfrage gespeichert und
-      nicht an Dritte weitergegeben.
-    </p>
-    <p>
-      <strong>Verantwortlich:</strong> Olla Gerber, Calle Perelló 78,
-      08005 Barcelona, Spanien · <a href="mailto:info@ugcbyolla.de">info@ugcbyolla.de</a>
-    </p>
-    <p class="modal__note">
-      Dies ist eine vereinfachte Datenschutzhinweis-Vorlage. Bitte vor dem
-      Live-Gang rechtlich prüfen lassen.
-    </p>
-  </div>
-</div>
 
 <script src="script.js"></script>
 </body>
