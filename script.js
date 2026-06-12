@@ -39,7 +39,8 @@
     { name: "Hofmanns",       file: "assets/brands/hofmanns.png",     url: "https://hofmanns-shop.de/" },
     { name: "Mother’s Earth", file: "assets/brands/mothersearth.png", url: "https://mothersearth.de/" },
     { name: "manesa",         file: "assets/brands/manesa.png",       url: "https://manesa.de/" },
-    { name: "Wecasa",         file: "assets/brands/wecasa.svg",       url: "https://www.wecasa.de/" }
+    { name: "Wecasa",         file: "assets/brands/wecasa.svg",       url: "https://www.wecasa.de/" },
+    { name: "Wunsch Kalender", file: "assets/brands/wunsch_kalender.png", url: "https://www.wunsch-kalender.de/" }
   ];
   var track = document.getElementById("marqueeTrack");
   if (track) {
